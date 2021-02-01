@@ -39,6 +39,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -66,17 +67,27 @@ public class CardsSteps {
 
     @Given("^User Launches App$")
     public void user_launches_app() {
-        onView(withText("ACTION 1")).check(matches(isDisplayed()));
+        onView(withText("Cards")).check(matches(isDisplayed()));
     }
 
     @When("^User is on Home Screen")
     public void user_is_on_home_screen() {
-       // onView(withId(R.id.email)).perform(typeText(email));
+       onView(withText("Cards")).check(matches(isDisplayed()));
     }
 
     @Then("^Verify Cards title presence$")
     public void verify_cards_title_presence() {
-        // onView(withId(R.id.email)).perform(typeText(email));
+        onView(withText("Cards")).check(matches(isDisplayed()));
+    }
+
+    @Then("^Verify Dialogs presence and click$")
+    public void verify_dialogs_presence_and_click() {
+        onView(withText("Dialogs")).perform(click()).check(matches(isDisplayed()));
+    }
+
+    @Then("^Verify Widgets presence and click$")
+    public void verify_widgets_presence_and_click() {
+        onView(withText("Widgets")).perform(click()).check(matches(isDisplayed()));
     }
 
 //    @Given("^I am on login screen")
