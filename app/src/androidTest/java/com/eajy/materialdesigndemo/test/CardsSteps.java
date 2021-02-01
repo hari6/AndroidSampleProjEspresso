@@ -34,6 +34,7 @@ import org.junit.internal.matchers.TypeSafeMatcher;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -42,7 +43,11 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.hasContentDescription;
+import static android.support.test.espresso.matcher.ViewMatchers.hasTextColor;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.Assert.assertNotNull;
@@ -89,6 +94,99 @@ public class CardsSteps {
     public void verify_widgets_presence_and_click() {
         onView(withText("Widgets")).perform(click()).check(matches(isDisplayed()));
     }
+
+    @Then("^Verify presence of Menu and click$")
+    public void verify_presence_of_Menu_and_click() {
+        onView(withContentDescription("Open navigation drawer")).check(matches(isDisplayed()));
+        onView(withContentDescription("Open navigation drawer")).perform(click());
+    }
+
+    @And("^Verify presence of Bottom Navigation and click$")
+    public void verify_presence_of_bottom_navigation_and_click() {
+        onView(withText("Bottom Navigation")).check(matches(isDisplayed()));
+        onView(withText("Bottom Navigation")).perform(click());
+    }
+
+    @Then("^Verify Blue bottom navigation presence$")
+    public void verify_blue_bottom_navigation_presence() {
+        onView(withText("Bottom Navigation")).check(matches(isDisplayed()));
+        onView(withContentDescription("Blue")).check(matches(isEnabled()));
+        onView(withContentDescription("Green")).perform(click());
+        onView(withContentDescription("Green")).check(matches(isEnabled()));
+        onView(withContentDescription("Yellow")).perform(click());
+        onView(withContentDescription("Yellow")).check(matches(isEnabled()));
+        onView(withContentDescription("Red")).perform(click());
+        onView(withContentDescription("Red")).check(matches(isEnabled()));
+    }
+
+    @Then("^Verify Green bottom navigation presence and click$")
+    public void verify_green_bottom_navigation_presence() {
+        onView(withContentDescription("Green")).perform(click());
+        onView(withContentDescription("Green")).check(matches(isEnabled()));
+    }
+
+    @Then("^Verify Yellow bottom navigation presence and click$")
+    public void verify_yellow_bottom_navigation_presence() {
+        onView(withContentDescription("Yellow")).perform(click());
+        onView(withContentDescription("Yellow")).check(matches(isEnabled()));
+    }
+
+    @Then("^Verify Red bottom navigation presence and click$")
+    public void verify_red_bottom_navigation_presence() {
+        onView(withContentDescription("Red")).perform(click());
+        onView(withContentDescription("Red")).check(matches(isEnabled()));
+    }
+
+    @And("^Verify  presence of About and click$")
+    public void verify_presence_of_about_and_click() {
+        onView(withText("About")).check(matches(isDisplayed()));
+        onView(withText("About")).perform(click());
+    }
+
+    @Then("^Verify Back button on About Screen$")
+    public void verify_back_button_on_about_screen() {
+        onView(withContentDescription("Navigate up")).check(matches(isDisplayed()));
+        onView(withContentDescription("Navigate up")).perform(click());
+    }
+
+    @And("^Verify  presence of My Apps and click$")
+    public void verify_presence_of_my_apps_and_click() {
+        onView(withText("My Apps")).check(matches(isDisplayed()));
+        onView(withText("My Apps")).perform(click());
+    }
+
+    @Then("^Verify Back button on My Apps Screen$")
+    public void verify_back_button_on_my_apps_screen() {
+        onView(withContentDescription("Navigate up")).check(matches(isDisplayed()));
+        onView(withContentDescription("Navigate up")).perform(click());
+    }
+
+    @Then("^Click back button$")
+    public void click_back_button() {
+        onView(withContentDescription("Navigate up")).check(matches(isDisplayed()));
+        onView(withContentDescription("Navigate up")).perform(click());
+    }
+
+    @And("^Verify presence of Recycler view and click$")
+    public void verify_presence_of_recycler_view_and_click() {
+        onView(withText("Recycler View")).check(matches(isDisplayed()));
+        onView(withText("Recycler View")).perform(click());
+    }
+
+    @Then("^Verify clicking Add button on bottom of screen")
+    public void verify_clicking_add_button_on_bottom_of_screen() {
+        onView(withId(Integer.parseInt("fab_recycler_view"))).check(matches(isDisplayed()));
+        onView(withId(Integer.parseInt("fab_recycler_view"))).perform(click());
+
+    }
+
+    @Then("^Verify Back button on Recycler view Screen")
+    public void verify_back_button_on_recycler_view_screen() {
+        onView(withContentDescription("Navigate up")).check(matches(isDisplayed()));
+        onView(withContentDescription("Navigate up")).perform(click());
+    }
+
+
 
 //    @Given("^I am on login screen")
 //    public void I_am_on_login_screen() {
