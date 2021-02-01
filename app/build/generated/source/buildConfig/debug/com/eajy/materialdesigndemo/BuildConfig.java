@@ -10,4 +10,6 @@ public final class BuildConfig {
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 46;
   public static final String VERSION_NAME = "5.4";
+  // Fields from build type: debug
+  public static final String TEST_TAGS = "";
 }

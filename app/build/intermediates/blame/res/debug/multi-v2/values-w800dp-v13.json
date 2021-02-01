@@ -8,9 +8,9 @@
                     "from": {
                         "startLines": "5,4,7,2",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "127,84,170,17",
+                        "startOffsets": "132,88,177,19",
                         "endColumns": "41,42,54,65",
-                        "endOffsets": "164,122,220,78"
+                        "endOffsets": "169,126,227,80"
                     },
                     "to": {
                         "startLines": "2,3,4,5",
